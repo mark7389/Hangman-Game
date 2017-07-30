@@ -32,7 +32,7 @@ placeHolder: function (str){
 
 	for(j=0;j<str.length;j++){
 
-		this.empty.push("__ ");
+		this.empty.push("_");
 	};
 
 },
@@ -105,7 +105,11 @@ document.onkeyup = function (event){
 
 		playerGuess = event.key.toLowerCase();
 
+		if((alphabet.indexOf(playerGuess) > -1) && !(game.letterGuess.indexOf(playerGuess) > -1)){
+
+
 		game.isFound = false;
+
 
 		for( i = 0; i < game.currentWord.length ; i++){
 
@@ -141,14 +145,18 @@ document.onkeyup = function (event){
 			game.lose++;
 		}
 
-					
+		}
+		else{
+
+			alert("not a letter or already guessed")
+		}			
 	}
 	
 
-	var html = "<p> Play: " + game.empty.join("") +"</p>" +
+	var html = "<p> " + game.empty.join("").toUpperCase() +"</p>" +
 	"<p> win: " + game.win + "</p>" + 
 	"<p> lose: " + game.lose + "</p>" + 
-	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> letters used:" + game.letterGuess.join("/").toUpperCase() + "</p>" + "<p> Previous Word: "
+	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> letters used:" + game.letterGuess.join(" / ").toUpperCase() + "</p>" + "<p> Previous Word: "
 	+ game.previousWord.toUpperCase() + "</p>" ;
 
 	document.querySelector("#game").innerHTML = html;
