@@ -5,7 +5,6 @@ var alphabet = ["a","b","c","d","e","f",
 "q","r","s","t","u","v","w","x","y","z"];
 
 var playerGuess = "";
-
 var game = {
 
 currentWord: "",
@@ -17,15 +16,12 @@ Guesses: 6,
 letterGuess: [],
 isFound: "",
 
-
 reset: function(){
 	this.Guesses = 6;
 	this.currentWord = "";
 	this.empty = [];
 	this.letterGuess = [];
 	this.isFound = "";
-	
-
 },
 
 placeHolder: function (str){
@@ -82,15 +78,11 @@ used: function(char){
 	this.letterGuess.push(char);
 },
 
-
-
 };
 // first anykey initiates new word
 // second key should be letter
 //isWin ...reset with new word;
 //islose...reset with new word
-
-
 document.onkeyup = function (event){
 
 
@@ -135,6 +127,7 @@ document.onkeyup = function (event){
 			game.generateWord();
 			game.placeHolder(game.currentWord);
 			game.win++;
+			
 		}
 		else if(game.isLose()){
 
@@ -153,13 +146,13 @@ document.onkeyup = function (event){
 	}
 	
 
-	var html = "<p> " + game.empty.join("").toUpperCase() +"</p>" +
-	"<p> win: " + game.win + "</p>" + 
-	"<p> lose: " + game.lose + "</p>" + 
-	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> letters used:" + game.letterGuess.join(" / ").toUpperCase() + "</p>" + "<p> Previous Word: "
-	+ game.previousWord.toUpperCase() + "</p>" ;
+	var html = "<p> " + game.empty.join("").toUpperCase() +"</p>" ;
 
-	document.querySelector("#game").innerHTML = html;
+	var play = "<br><br>" + "<p> Win: " + game.win + "   " + " Lose: "+ game.lose + "</p>" +
+	
+	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> Letters Used:" + game.letterGuess.join(" / ").toUpperCase() + "</p>" + "<p> Previous Word: "
+	+ game.previousWord.toUpperCase() + "</p>";
+
+	document.querySelector("#game").innerHTML += html;
+	document.querySelector("#score").innerHTML = play;
 }
-
-

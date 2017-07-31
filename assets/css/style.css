@@ -1,10 +1,81 @@
+body{
+
+	font-family: 'Artifika', Serif;
+	
+}
+p{
+	margin:15px 100px;
+	font-size: 20px;
+}
+h1{
+	width:200px;
+	background-color:#a48c72;
+	border: 5px solid orange;
+}
+.top{
+	margin:auto;
+	width:65%;
+	height:100px;
+	background-image: url("../images/architecture-238137_340.jpg");
+	
+	color:orange;
+	
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+
+}
+.middle{
+	position:relative;
+	margin:0px auto;
+	margin-top:10px;
+	width:65%;
+	height:500px;
+	background-image: url("../images/purty_wood.png");
+	opacity:0.9;
+	
+}
 #game{
 	margin:auto;
-	width:650px;
-	height: 900px;
-	background-color: #444;
+	float:left;
+	width:375px;
+	height:333px;
+	background-image: url("../images/zwartevilt.png");
 	color:#ffffff;
 	letter-spacing: 5px;
+	border:5px solid orange;
+	border-left: none;
+	vertical-align: middle;
+	line-height: 325px;
+	opacity: 1.0;
+}
+.container{
+	position:absolute;
+	margin:0px auto;
+	width:900px;
+	height:500px;
+	top:75px;
+	left:35px;
+	
+}
+.container:after{
+
+	content=" ";
+	visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+#score{
+	float:left;
+	margin:auto;
+	width:375px;
+	height:333px;
+	color: #ffffff;
+	background-image: url("../images/zwartevilt.png");
+	border:5px solid orange;
+	border-right: none;
+	opacity: 1.0;
 }
 
 }
@@ -12,4 +83,17 @@
 	
 	letter-spacing: 10px;
 
+}
+.bottom{
+	float:none;
+	margin:auto;
+	width:65%;
+	border-top:5px solid orange;
+	color:orange;
+	height: 100px;
+	background-color:#a48c72;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+	
 }
