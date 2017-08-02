@@ -1,10 +1,19 @@
-var wordZ = ["Madonna", "Bertrand","Schopenhauer","gladiator","soarise","figs","aristotle", "Plato","odysseus","ramsis","napoleon","Television", "rope", "chair", "marmalade"];
+var wordZ = ["Madonna", "Bertrand Russell","Lion King","Hoola Hoop","Schopenhauer","gladiator","soarise","figs","aristotle", "Plato","odysseus","ramsis","napoleon","Television", "rope", "chair", "marmalade"];
 
 var alphabet = ["a","b","c","d","e","f",
 "g","h","i","j","k","l","m","n","o","p",
 "q","r","s","t","u","v","w","x","y","z"];
 
+
 var playerGuess = "";
+
+function drawArc(){
+
+var ctx = document.getElementById("myCanvas").getContext("2d");
+ctx.arc(187.5, 2, 0, Math.PI * 2, false);
+ctx.stroke();
+}
+
 var game = {
 
 currentWord: "",
@@ -27,13 +36,17 @@ reset: function(){
 placeHolder: function (str){
 
 	for(j=0;j<str.length;j++){
+		if(str[j] == " "){
 
+			this.empty.push(" ");
+		}else{
 		this.empty.push("_");
+		}
 	};
 
 },
 
-generateWord: function(){
+generateWord: function(){ //come back later and prevent replication of generated words during game. 
 
 	this.currentWord = wordZ[Math.floor(Math.random() * wordZ.length)];
 
@@ -117,6 +130,7 @@ document.onkeyup = function (event){
 		if(game.isFound == false){
 
 			game.Guesses--;
+			window.onload = drawArc();
 		}
 		game.used(playerGuess);
 		
@@ -146,13 +160,13 @@ document.onkeyup = function (event){
 	}
 	
 
-	var html = "<p> " + game.empty.join("").toUpperCase() +"</p>" ;
+	
 
-	var play = "<br><br>" + "<p> Win: " + game.win + "   " + " Lose: "+ game.lose + "</p>" +
+	var play = "<p> " + game.empty.join("").toUpperCase() +"</p>" + "<br>" + "<p> Win: " + game.win + "   " + " Lose: "+ game.lose + "</p>" +
 	
 	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> Letters Used:" + game.letterGuess.join(" / ").toUpperCase() + "</p>" + "<p> Previous Word: "
 	+ game.previousWord.toUpperCase() + "</p>";
 
-	document.querySelector("#game").innerHTML += html;
+	
 	document.querySelector("#score").innerHTML = play;
 }

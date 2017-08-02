@@ -12,6 +12,7 @@ h1{
 	background-color:#a48c72;
 	border: 5px solid orange;
 }
+
 .top{
 	margin:auto;
 	width:65%;
@@ -48,6 +49,11 @@ h1{
 	vertical-align: middle;
 	line-height: 325px;
 	opacity: 1.0;
+}
+#mycanvas{
+
+	background-color: white;
+	z-index: 999;
 }
 .container{
 	position:absolute;
