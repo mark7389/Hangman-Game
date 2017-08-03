@@ -4,16 +4,84 @@ var alphabet = ["a","b","c","d","e","f",
 "g","h","i","j","k","l","m","n","o","p",
 "q","r","s","t","u","v","w","x","y","z"];
 
-
 var playerGuess = "";
 
+// canvas functions:
+// -----------------
 function drawArc(){
-
-var ctx = document.getElementById("myCanvas").getContext("2d");
-ctx.arc(187.5, 2, 0, Math.PI * 2, false);
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.arc(187.5, 50 , 50, 0, Math.PI * 2, false);
+ctx.strokeStyle = "white";
 ctx.stroke();
 }
 
+function drawbod(){
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(187.5,100);
+	ctx.lineTo(187.5,250);
+	ctx.strokeStyle = "white";
+	ctx.stroke();
+}
+
+function drawRarm(){
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(187.5,150);
+	ctx.lineTo(230,180);
+	ctx.strokeStyle = "white";
+	ctx.stroke();
+}
+
+function drawLarm(){
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(187.5,150);
+	ctx.lineTo(145,180);
+	ctx.strokeStyle = "white";
+	ctx.stroke();
+
+}
+
+function drawRleg(){
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(187.5,250);
+	ctx.lineTo(230,280);
+	ctx.strokeStyle = "white";
+	ctx.stroke();
+}
+
+function drawLleg(){
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(187.5,250);
+	ctx.lineTo(145,280);
+	ctx.strokeStyle = "white";
+	ctx.stroke();
+}
+
+function clearC(){
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.clearRect(0, 0, 375, 400);
+}
+
+
+// game object
+// -----------
 var game = {
 
 currentWord: "",
@@ -31,6 +99,8 @@ reset: function(){
 	this.empty = [];
 	this.letterGuess = [];
 	this.isFound = "";
+	clearC();
+	
 },
 
 placeHolder: function (str){
@@ -130,12 +200,37 @@ document.onkeyup = function (event){
 		if(game.isFound == false){
 
 			game.Guesses--;
-			window.onload = drawArc();
+			
+			if(game.Guesses == 5){
+
+				drawArc();
+			}
+			else if(game.Guesses == 4){
+
+				drawbod();
+			}
+			else if(game.Guesses == 3){
+
+				drawLarm();
+			}
+			else if(game.Guesses == 2){
+
+				drawRarm();
+			}
+			else if(game.Guesses == 1){
+
+				drawLleg();
+			}
+			else if(game.Guesses == 0){
+
+				drawRleg();
+			}
+			
 		}
 		game.used(playerGuess);
 		
 		if(game.isWin()){
-
+			
 			game.previousWord = game.currentWord;
 			game.reset();
 			game.generateWord();
@@ -162,7 +257,7 @@ document.onkeyup = function (event){
 
 	
 
-	var play = "<p> " + game.empty.join("").toUpperCase() +"</p>" + "<br>" + "<p> Win: " + game.win + "   " + " Lose: "+ game.lose + "</p>" +
+	var play = "<p> " + game.empty.join("").toUpperCase() +"</p>" + "<br>" + "<p> Win: " + game.win + " " + " Lose: "+ game.lose + "</p>" +
 	
 	"<p> Guesses Left: " + game.Guesses + "</p>" + "<p> Letters Used:" + game.letterGuess.join(" / ").toUpperCase() + "</p>" + "<p> Previous Word: "
 	+ game.previousWord.toUpperCase() + "</p>";
