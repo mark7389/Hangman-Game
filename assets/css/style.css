@@ -4,9 +4,10 @@
 
 }
 body{
-
 	font-family: 'EraserDust', serif;
-	
+	height: 100vh;
+	overflow-y: hidden;
+	padding: 20px 10px;
 }
 p{
 	margin:15px 100px;
@@ -24,26 +25,23 @@ h1{
 .top{
 	position:relative;
 	margin:auto;
-	width:65%;
 	height:100px;
-	
-	
 	color:orange;
-	
 	text-align: center;
 	vertical-align: middle;
 	line-height: 100px;
-
 }
 .middle{
 	position:relative;
 	margin:0px auto;
 	margin-top:10px;
-	width:65%;
-	height:500px;
+	height: 75vh;
 	background-image: url("../images/class.jpg");
-	opacity:0.9;
-	
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 #game{
 	margin:auto;
@@ -52,7 +50,6 @@ h1{
 	height:333px;
 	background-image: url("../images/zwartevilt.png");
 	color:#ffffff;
-	
 	border:5px solid orange;
 	border-left: none;
 	vertical-align: middle;
@@ -65,17 +62,10 @@ h1{
 	z-index: 999;
 }
 .container{
-	position:absolute;
-	margin:0px auto;
-	width:900px;
-	height:500px;
-	top:75px;
-	left:35px;
-	
+	margin:50px auto;
 }
 .container:after{
-
-	content=" ";
+	content: " ";
 	visibility: hidden;
     display: block;
     height: 0;
@@ -95,16 +85,12 @@ h1{
 	text-align: center;
 }
 
-}
 #board{
-	
 	letter-spacing: 10px;
-
 }
 .bottom{
 	float:none;
 	margin:auto;
-	width:65%;
 	border-top:5px solid orange;
 	color:orange;
 	height: 75px;
@@ -112,5 +98,4 @@ h1{
 	text-align: center;
 	vertical-align: middle;
 	line-height: 75px;
-	
 }
